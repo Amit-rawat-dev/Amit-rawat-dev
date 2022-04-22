@@ -12,13 +12,32 @@ export default {
       type: 'string',
     },
     {
-      title: 'Slug',
       name: 'slug',
+      title: 'Slug',
       type: 'slug',
       options: {
         source: 'name',
-        maxLenght: 96,
+        maxLength: 96,
       },
     },
+    {
+      name: 'profileImage',
+      title: 'Profile Image',
+      type: 'customImage',
+    },
   ],
+  preview: {
+    select: {
+      title: 'name',
+      image: 'profileImage',
+      slug: 'slug',
+    },
+    prepare({ title, image, slug }) {
+      return {
+        title,
+        media: image,
+        subtitle: slug.current,
+      };
+    },
+  },
 };
